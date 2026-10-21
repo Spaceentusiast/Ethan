@@ -1,148 +1,108 @@
-body {
-	margin: 0;
-	background: #10100e;
-	color: #f4edda;
-	font-family: "Playfair Display", Georgia, serif;
-}
-
-:root {
-	color-scheme: dark;
-	--ink: #10100e;
-	--paper: #f4edda;
-	--muted: #b6ad98;
-	--orange: #f07832;
-	--yellow: #f3c94e;
-	--line: rgba(244, 237, 218, 0.2);
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-a { color: inherit; text-decoration: none; }
-
-.site-header {
-	display: flex;
-	min-height: 82px;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0 7.2%;
-	border-bottom: 1px solid var(--line);
-}
-.wordmark { font-size: 1.18rem; font-weight: 700; letter-spacing: 0.12em; }
-.wordmark span, .site-footer a span { color: var(--orange); }
-.main-nav { display: flex; gap: clamp(22px, 4vw, 58px); color: var(--muted); font-size: 0.9rem; }
-.main-nav a, .site-footer a { transition: color 180ms ease; }
-.main-nav a:hover, .site-footer a:hover { color: var(--yellow); }
-.header-note { color: var(--muted); font-size: 0.68rem; letter-spacing: 0.1em; }
-
-.hero {
-	position: relative;
-	display: grid;
-	grid-template-columns: 0.92fr 1.08fr;
-	min-height: min(690px, calc(100svh - 82px));
-	padding: 70px 7.2% 76px;
-	overflow: hidden;
-}
-.hero-copy { position: relative; z-index: 1; align-self: center; padding: 12px 0 35px; }
-.eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 23px; color: var(--yellow); font-size: 0.78rem; letter-spacing: 0.08em; }
-.eyebrow span { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 13px rgba(240, 120, 50, 0.75); }
-h1, h2, p { margin-top: 0; }
-h1 { max-width: 630px; margin-bottom: 24px; font-size: clamp(4rem, 7.4vw, 7rem); font-weight: 500; line-height: 0.98; }
-h1 em, h2 em { color: var(--orange); }
-.hero-intro { max-width: 390px; margin-bottom: 37px; color: var(--muted); font-size: 1.05rem; line-height: 1.8; }
-.round-link { display: inline-grid; width: 48px; aspect-ratio: 1; place-items: center; border: 1px solid var(--orange); border-radius: 50%; color: var(--yellow); font-size: 1.25rem; transition: background 180ms ease, color 180ms ease; }
-.round-link:hover { background: var(--orange); color: var(--ink); }
-.scroll-note { margin-left: 15px; color: var(--muted); font-size: 0.66rem; letter-spacing: 0.12em; }
-.hero-image {
-	position: relative;
-	min-height: 410px;
-	background-color: #251815;
-	background-image: linear-gradient(0deg, rgba(16, 16, 14, 0.72), transparent 38%), url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1400&q=85");
-	background-position: center;
-	background-size: cover;
-	animation: reveal 900ms ease both;
-}
-.hero-image::after { position: absolute; inset: 0; border: 1px solid rgba(243, 201, 78, 0.18); content: ""; pointer-events: none; }
-.image-caption, .image-coordinate { position: absolute; bottom: 22px; z-index: 1; color: var(--paper); font-size: 0.72rem; }
-.image-caption { left: 24px; }
-.image-coordinate { right: 24px; color: var(--muted); }
-.hero-index { position: absolute; right: 2.7%; bottom: 35px; color: var(--yellow); font-size: 0.75rem; line-height: 1.9; text-align: center; }
-.hero-index span { color: var(--orange); }
-
-.section-wrap { width: min(1120px, 85.6%); margin: 0 auto; }
-.about-section { padding-top: 77px; padding-bottom: 92px; }
-.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 37px; }
-.section-heading .eyebrow { margin-bottom: 12px; }
-h2 { margin-bottom: 0; font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 500; line-height: 1.12; }
-.section-number { padding-bottom: 8px; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.1em; }
-.about-copy { position: relative; min-height: 190px; padding: 35px 40px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.about-copy p { position: relative; z-index: 1; max-width: 680px; margin: 0; color: var(--muted); font-size: clamp(1.15rem, 2vw, 1.6rem); line-height: 1.7; }
-.about-mark { position: absolute; top: -70px; right: 8%; color: rgba(240, 120, 50, 0.18); font-size: 230px; line-height: 1; }
-
-.site-footer { display: flex; min-height: 88px; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 7.2%; color: var(--muted); }
-.site-footer p { margin: 0; font-size: 0.82rem; }
-.site-footer > a:last-child { font-size: 0.68rem; letter-spacing: 0.1em; }
-
-@keyframes reveal {
-	from { opacity: 0; transform: translateY(12px); }
-	to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 760px) {
-	.site-header { min-height: 72px; padding: 0 6%; }
-	.header-note { display: none; }
-	.main-nav { gap: 20px; font-size: 0.82rem; }
-	.hero { grid-template-columns: 1fr; gap: 30px; padding: 58px 6% 55px; }
-	.hero-copy { padding-bottom: 0; }
-	h1 { font-size: clamp(4rem, 14vw, 6.3rem); }
-	.hero-image { min-height: 340px; }
-	.hero-index { display: none; }
-	.section-wrap { width: 88%; }
-	.about-section { padding-top: 60px; padding-bottom: 65px; }
-	.about-copy { min-height: 160px; padding: 28px 8px; }
-	.about-mark { right: 5%; font-size: 180px; }
-	.site-footer { flex-wrap: wrap; padding: 22px 6%; }
-	.site-footer p { order: 1; width: 100%; }
-}
-
-@media (max-width: 420px) {
-	.hero-image { min-height: 285px; }
-	.image-caption, .image-coordinate { bottom: 15px; font-size: 0.62rem; }
-	.image-caption { left: 14px; }
-	.image-coordinate { right: 14px; }
-	.section-heading { align-items: flex-start; flex-direction: column; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-	*, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-}
-.caise-heading {
-    margin-left: 46px;
-    margin-bottom: 40px;
-}
-.project-title {
-    margin-left: 68px;
-    margin-bottom: 25px;
-}
-.project-card {
-    margin-left: 156px;
-    margin-bottom: 15px;
-	font-size: 4.1rem;
-}
-.section-heading {
-    margin-left: 68px;
-    margin-bottom: 25px;
-}
-.tumo-link {
-    color: var(--orange);
-    font-size: 1.2rem;
-}
-.tumo-title {
-	margin-left: 82px;
-	margin-bottom: 25px;
-	font-size: 3.2rem;
-}
-.me-phrase {
-	margin-left: 68px;
-	margin-bottom: 25px;
-	color: var(--orange);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10100e">
+    <title>Ethan's Cool Website</title>
+	<style>
+		
+	</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Space.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="wordmark" href="#home">Ethan's Cool Website :)<span>.</span></a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#site-note">The site</a>
+        </nav>
+        <span class="header-note">ETHAN'S SPACE</span>
+    </header>
+    <main id="HomePage" class="site-main">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <p class="eyebrow"><span></span> Hello, welcome to my digital portfolio</p>
+                <h1 id="hero-title">Learn<br>About<em>Me.</em></h1>
+                <p class="hero-intro">I built this website for some CAISE hours and, generally, why not? Feel free to explore and learn about me.</p>
+                <a class="round-link" href="#about" aria-label="Explore the site"><span aria-hidden="true">↓</span></a>
+                <span class="scroll-note">Many places to start!</span>
+            </div>
+            <div class="hero-image" role="img" aria-label="A glowing nebula in deep space">
+                <span class="image-caption">Space is cool, anyone who says otherwise is lame</span>
+                <span class="image-coordinate">NASA</span>
+            </div>
+            <span class="hero-index" aria-hidden="true">01<br><span>—</span><br>02</span>
+        </section>
+        <section class="about-section section-wrap" id="about" aria-labelledby="about-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">A good place to start</p>
+                    <h2 id="about-title">A bit about <em>this page.</em></h2>
+                </div>
+                <span class="section-number">01 / ABOUT</span>
+            </div>
+            <div class="about-copy" id="site-note">
+                <p>This website is a digital portfolio showcasing my work and interests. Feel free to explore and learn more about me. I have content ranging from my outside of school work (papers, TUMO) to school (clubs and activities).</p>
+                <span class="about-mark" aria-hidden="true">:)</span>
+            </div>
+        </section>
+       <h1 class="caise-heading">What have<br> I done for <br><em>CAISE?</em></h1>
+      <class="CAISE"> 
+        <article class="project-card">
+            <text> 
+            - Built a digital portfolio website <br>
+            </text>
+            - TUMO: <a class="Tumo-link" href="#Tumo" aria-label="See my TUMO work"><span aria-hidden="true"><em>Click here to see my work</em></span></a> <br>
+            <text>
+            - (fill in later) <br>
+            - (fill in later) <br>
+            - (fill in later) <br>   
+            - (fill in later) <br>
+            - (fill in later) <br>
+            - (fill in later) <br>
+            <br>
+            <br>
+            </text>
+       </article>
+      </class>
+      <section class="TUMO Portfolio!" id="Tumo" aria-labelledby="Tumo-title">
+        <div class="section-heading">
+            <div>
+                <h1 id="Tumo-title">A bit about <em>my TUMO work.</em></h1>
+                <br>
+                <p>Here is a link to my TUMO portfolio:</p>
+                <br>
+                <a class="Tumo-link" href="https://portfolio.pt.tumo.world/" aria-label="See my TUMO work">
+                    <span aria-hidden="true"><em>Portfolio</em></span>
+                </a>
+            </div>
+            <span class="section-number">02 / TUMO</span>
+        </div>
+      </section>
+      <section class="About me" id="about me" aria-labelledby="about me-title">
+        <div class="section-heading">
+            <div>
+                <h1 id="about me-title">A bit about <em>me.</em></h1>
+                <br>
+                <p>I am a student at CLIP (Colegio Luso Internacional do Porto) and I have a lot of interests.</p>
+                <p>Personally, I am passionate about<em> Astrophysics, Programming, Science (which includes Biology and Chemistry) and being lazy</em></p><br>
+                <h3 id="me-phrase" class="me-phrase"><em>A good way to describe me is someone who is up to try new things</em>, ranging from cooking to learning.</h3>
+                </a>
+            </div>
+            <span class="section-number">03 / ME</span>
+        </div>
+        <div class="about-copy">
+            <p>I will add more stuff as I go on. I will add papers, more projects and personal stuff like little funfacts</p>
+            <span class="about-mark" aria-hidden="true">:)</span>
+        </div> 
+    </main>
+    <footer class="site-footer">
+        <a class="wordmark" href="#home">ETHAN<span>.</span></a>
+        <p>Thanks for stopping by.</p>
+        <a href="#home">BACK TO TOP <span aria-hidden="true">↑</span></a>
+    </footer>
+</body>
