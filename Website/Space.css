@@ -141,3 +141,8 @@ h2 { margin-bottom: 0; font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 500; 
 	margin-bottom: 25px;
 	font-size: 3.2rem;
 }
+.me-phrase {
+	margin-left: 68px;
+	margin-bottom: 25px;
+	color: var(--orange);
+}
